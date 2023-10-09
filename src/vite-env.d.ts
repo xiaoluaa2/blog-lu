@@ -11,6 +11,11 @@ declare module 'vue3-video-play' {
   export default vis
 }
 declare module 'nprogress'
+declare module 'vanta/src/vanta.net'
+declare module '*.ts'
+declare module '*.js'
+declare module 'vue3-particles'
+declare module 'pinia-plugin-persistedstate'
 
 /* 
   declare module 是为了告诉 tsc 这是一个“模块”，从而不让 IDE 里因为 tsc 类型检查相关的 lint 而标红。

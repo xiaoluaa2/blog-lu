@@ -86,7 +86,7 @@ request.interceptors.response.use(
       })
     }
 
-    return response.status === 200
+    return response.status === 200 || response.status === 201
       ? Promise.resolve(response)
       : Promise.reject(response)
   },

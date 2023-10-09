@@ -1,38 +1,40 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { close, start } from '@/utils/nporgress'
-const Login = () => import('@/views/login/Login.vue')
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+
+const Blogs = () => import('@/views/blogs/Blogs.vue')
+const BlogDetail = () => import('@/views/blogs/BlogDetail.vue')
+const Message = () => import('@/views/message/Message.vue')
+const Parallax = () => import('@/views/page/Parallax.vue')
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/blogs',
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login,
+    path: '/blogs',
+    component: Blogs,
+  },
+  {
+    name: 'BlogDetail',
+    path: '/blogDetail/:id',
+    component: BlogDetail,
+  },
+  {
+    path: '/message',
+    component: Message,
+  },
+  {
+    path: '/parallax',
+    component: Parallax,
   },
 ]
 const router = createRouter({
   history: createWebHistory(),
   routes,
 })
-// 验证token
-router.beforeEach((to, from, next) => {
-  if (
-    to.path === '/login' ||
-    to.path === '/register' ||
-    to.path === '/forgetPassword'
-  )
-    return next()
-  else {
-    let flag = window.localStorage.getItem('token')
-    console.log(flag)
 
-    if (!flag) {
-      localStorage.setItem('autoChecked', '')
-      return next('/login')
-    }
-  }
+router.beforeEach((to, from, next) => {
   start()
   next()
 })

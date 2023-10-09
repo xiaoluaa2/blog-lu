@@ -50,23 +50,23 @@ export default defineConfig({
     open: true, // 服务启动时是否自动打开浏览器
     cors: true, // 允许跨域
     proxy: {
-      '/download': {
-        //  测试
+      // '/download': {
+      //   //  测试
 
-        target: 'http://tianzeedutest.fhxmcy.com',
-        // target: '  http://edu.tianzerencai.com',
-        changeOrigin: true,
-        // 线上
-        // target: 'http://tianzeedu.tianzerencai.com',
-        // rewrite: (path) => path.replace(/^\/download/, ''),
-      },
+      //   target: 'http://localhost:3000',
+      //   // target: '  http://edu.tianzerencai.com',
+      //   changeOrigin: true,
+      //   // 线上
+      //   // target: 'http://tianzeedu.tianzerencai.com',
+      //   // rewrite: (path) => path.replace(/^\/download/, ''),
+      // },
       '/api': {
         //  测试
-        target: 'http://tianzeedutest.fhxmcy.com',
+        target: 'http://localhost:3000',
         // 线上
         // target: 'http://tianzeedu.tianzerencai.com',
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
